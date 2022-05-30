@@ -528,7 +528,7 @@ dirlookup(struct inode *dp, char *name, uint *poff)
 	for(off = 0; off < dp->size; off += sizeof(de)){
 		if(readi(dp, (char*)&de, off, sizeof(de)) != sizeof(de))
 			panic("dirlookup read");
-		if(de.inum == 0)
+		if(de.inum == 0 || de.del == '1')
 			continue;
 		if(namecmp(name, de.name) == 0){
 			// entry matches path element
