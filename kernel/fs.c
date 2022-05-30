@@ -412,7 +412,7 @@ itrunc(struct inode *ip)
 	for(i = 0; i < NDIRECT; i++){
 		if(ip->addrs[i]){
 			bfree(ip->dev, ip->addrs[i]);
-			ip->addrs[i] = 0;
+			//ip->addrs[i] = 0;
 		}
 	}
 
@@ -425,10 +425,10 @@ itrunc(struct inode *ip)
 		}
 		brelse(bp);
 		bfree(ip->dev, ip->addrs[NDIRECT]);
-		ip->addrs[NDIRECT] = 0;
+		//ip->addrs[NDIRECT] = 0;
 	}
 
-	ip->size = 0;
+	//ip->size = 0;
 	iupdate(ip);
 }
 
