@@ -443,6 +443,33 @@ sys_pipe(void)
 	return 0;
 }
 
-int sys_lsdel(void){
-	
+int 
+sys_lsdel(void){
+	char *path, *result;
+	struct inode *ip;
+	struct dirent de;
+	int deleted_count = 0;
+	int i = 0;
+	int off=0;
+
+	// bad request
+	if (argstr(0, &path) < 0 || argstr(1, &result) < 0)
+		return -1; 
+	// nepostojeci direktorijum za pretragu
+	if ((ip = namei(path)) == 0)
+		return -1;
+
+	ilock(ip);
+
+	for(off=0; off < ip->size && i < 64; off+=sizeof(de)){
+		readi(ip, (char*) &de, off, sizeof(de));
+		if(de.del == '1'){
+			deleted_count++;
+			i++;
+		}
+	}
+	iunlock(ip);
+
+	cprintf("%d",deleted_count);
+	return deleted_count;
 }
