@@ -7,7 +7,7 @@ int
 main(int argc, char *argv[])
 {
 	int deleted_count = 0;
-	int i;
+	int i,j;
 	char* result = malloc(64*(DIRSIZ+1));
 
 	if(argc < 2){
@@ -18,6 +18,9 @@ main(int argc, char *argv[])
 			printf("Navedena putanja nije validna!\n");
 		} else {
 			//TODO
+			for(j=0; j<deleted_count; j++){
+				printf("%s",&result[j]);
+			}
 			printf("%d \n",deleted_count);
 		}
 	} 
@@ -29,11 +32,11 @@ main(int argc, char *argv[])
 			printf("Navedena putanja nije validna!\n");
 		} else {
 			//TODO 
-			/*
-			for(j=0; j<deleted_count; j++){
-				printf(result[j])
-			}
-			*/
+			
+			// for(j=0; j<deleted_count; j++){
+			// 	printf("%s",&result[j]);
+			// }
+			
 			printf("%d\n",deleted_count);
 		}
 	}

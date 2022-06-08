@@ -465,10 +465,9 @@ sys_lsdel(void){
 		readi(ip, (char*) &de, off, sizeof(de));
 		if(de.del == '1'){
 			deleted_count++;
-
 			//TODO
-			// result[i] = de.name
-			
+			strncpy(&result[i],de.name,DIRSIZ+1);
+			//cprintf("%s",&(de.name));
 			i++;
 		}
 	}
