@@ -465,11 +465,15 @@ sys_lsdel(void){
 		readi(ip, (char*) &de, off, sizeof(de));
 		if(de.del == '1'){
 			deleted_count++;
+
+			//TODO
+			// result[i] = de.name
+			
 			i++;
 		}
 	}
+
 	iunlock(ip);
 
-	cprintf("%d",deleted_count);
 	return deleted_count;
 }
