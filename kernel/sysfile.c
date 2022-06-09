@@ -450,6 +450,7 @@ sys_lsdel(void){
 	struct dirent de;
 	int deleted_count = 0;
 	int i = 0;
+	int j;
 	int off=0;
 
 	// bad request
@@ -462,12 +463,13 @@ sys_lsdel(void){
 	ilock(ip);
 
 	for(off=0; off < ip->size && i < 64; off+=sizeof(de)){
-		readi(ip, (char*) &de, off, sizeof(de));
+		readi(ip, (char *) &de, off, sizeof(de));
 		if(de.del == '1'){
 			deleted_count++;
 			//TODO
-			strncpy(&result[i],de.name,DIRSIZ+1);
-			//cprintf("%s",&(de.name));
+			//cprintf("%s",de.name);
+			strncpy(result+(i*(DIRSIZ+1)),de.name,DIRSIZ+1);
+
 			i++;
 		}
 	}

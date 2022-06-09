@@ -14,12 +14,12 @@ main(int argc, char *argv[])
 		open(argv[1], O_CREATE);	
 		fd = open(argv[1], O_WRONLY);
 		bytes = atoi(argv[2]);
-		a = (char*)malloc(bytes);
+		a = malloc(bytes);
 		memset(a, 'a', bytes);
 		write(fd, a, bytes);
 		exit();	
 	} else {
-		printf("writer: bad request: 'writer -filename -bytes'\n");
+		printf("bad request: 'writer -filename -bytes'\n");
 		exit();
 	}
 }

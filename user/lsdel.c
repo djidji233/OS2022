@@ -19,9 +19,8 @@ main(int argc, char *argv[])
 		} else {
 			//TODO
 			for(j=0; j<deleted_count; j++){
-				printf("%s",&result[j]);
+				printf("%s\n",result+(j*(DIRSIZ+1)));
 			}
-			printf("%d \n",deleted_count);
 		}
 	} 
 	for(i=1; i<argc; i++){
@@ -33,11 +32,10 @@ main(int argc, char *argv[])
 		} else {
 			//TODO 
 			
-			// for(j=0; j<deleted_count; j++){
-			// 	printf("%s",&result[j]);
-			// }
-			
-			printf("%d\n",deleted_count);
+			for(j=0; j<deleted_count; j++){
+				printf("%s\n",result+(j*(DIRSIZ+1)));
+			}
+
 		}
 	}
 	
